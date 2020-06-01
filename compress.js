@@ -8,33 +8,33 @@ String.prototype.delete = function(idx, count) {
     return this.slice(0, idx) + this.slice(idx + count);
 };
 
-const calculateZ = (input) => {
-    let Z = Array(input.length).fill(0);
+const cal_count = (input) => {
+    let count_arr = Array(input.length).fill(0);
     let left = 0;
     let right = 0;
-    for (let k = 1; k < input.length; k++) {
-        if (k > right) {
-            left = right = k;
+    for (let i = 1; i < input.length; i++) {
+        if (i > right) {
+            left = right = i;
             while (right < input.length && input[right] === input[right - left]) {
                 right++;
             };
-            Z[k] = right - left;
+            count_arr[i] = right - left;
             right--;
         } else {
-            let k1 = k - left;
-            if (Z[k1] < right - k + 1) {
-                Z[k] = Z[k1];
+            let j = i - left;
+            if (count_arr[j] < right - i + 1) {
+                count_arr[i] = count_arr[j];
             } else {
-                left = k;
+                left = i;
                 while (right < input.length && input[right] === input[right - left]) {
                     right++;
                 };
-                Z[k] = right - left;
+                count_arr[i] = right - left;
                 right--; 
             }
         }
     }
-    return Z;
+    return count_arr;
 };
 
 module.exports.compress = (input) => {
@@ -44,28 +44,28 @@ let unmatched_str = '';
 
 while (input.length > 0) {
 
-    let z_arr = calculateZ(input);
+    let count_arr = cal_count(input);
     
-    uni_z = [...new Set([...z_arr].sort())];
+    unique_count = [...new Set([...count_arr].sort())];
 
-    while (uni_z.length > 0) {
+    while (unique_count.length > 0) {
     
-    let max_z = uni_z.pop();
+    let max_count = unique_count.pop();
 
-    if (max_z == 0) {
+    if (max_count == 0) {
         unmatched_str = unmatched_str + input[0];
         input = input.slice(1);
         break;
         
-    } else if (max_z > index_length(z_arr.indexOf(max_z))) {
+    } else if (max_count > index_length(count_arr.indexOf(max_count))) {
         if (unmatched_str) {
             data_obj.push(unmatched_str);
         };
         unmatched_str = '';
-        key = input.slice(0, max_z);
+        key = input.slice(0, max_count);
         value = '';
-        z_arr.forEach((elem,index) => {
-            if (elem == max_z && index_length(index) < max_z) {
+        count_arr.forEach((elem,index) => {
+            if (elem == max_count && index_length(index) < max_count) {
                 if (value) {
                     value = value + ',' + index
                 } else {
@@ -76,9 +76,9 @@ while (input.length > 0) {
         data_obj.push({[key]: value});
         let value_arr = value.split(',').map(elem => Number(elem))
         for (let i = value_arr.length-1; i >=0; i--) {
-            input = input.delete(value_arr[i], max_z)
+            input = input.delete(value_arr[i], max_count)
         };
-        input = input.delete(0, max_z)
+        input = input.delete(0, max_count)
         break;
         }
     }
