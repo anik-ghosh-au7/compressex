@@ -1,0 +1,28 @@
+{
+  "name": "compressex",
+  "version": "1.0.0",
+  "description": "App for compression, decompression, encoding, decoding, string to binary, binary to string, etc",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anik-ghosh-au7/compressex.git"
+  },
+  "keywords": [
+    "compression",
+    "decompression",
+    "encoding",
+    "decoding",
+    "string",
+    "to",
+    "binary",
+    "binary",
+    "to",
+    "string"
+  ],
+  "author": "Anik Ghosh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anik-ghosh-au7/compressex/issues"
+  },
+  "homepage": "https://github.com/anik-ghosh-au7/compressex#readme"
+}
