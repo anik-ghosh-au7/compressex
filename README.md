@@ -78,4 +78,4 @@ npm install -g compressex
 
 ## Notes ##
 
-You can use the object-sizeof npm package to get the size of the objects, to check the size of the inputs & compressed outputs.
+You can use the object-sizeof package through npm to get the size of the objects, to check the size of the inputs & compressed outputs.
