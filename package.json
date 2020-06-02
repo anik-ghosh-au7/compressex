@@ -1,6 +1,6 @@
 {
   "name": "compressex",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "App for compression, decompression, encoding, decoding, string to binary, binary to string, etc",
   "main": "index.js",
   "repository": {
