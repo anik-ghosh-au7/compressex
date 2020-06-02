@@ -73,7 +73,7 @@ npm install compressex
 Just run the following command with npm to install compressex globally :
 
 ```
-npm install compressex -g
+npm install -g compressex
 ```
 
 ## Notes ##
